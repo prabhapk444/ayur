@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+</head>
+<body>
+    <form action="process_survey.php" method="post">
+        <label for="question27">What best describes your social skills?</label><br>
+
+        <!-- First choice -->
+        <input type="radio" id="largeCircle" name="question27" value="Pitta-I enjoy deep and meaningful conversations">
+        <label for="largeCircle">
+            <img src="https://cdn.shopify.com/s/files/1/0037/7690/5283/files/vpq-social-large.svg?v=16539090912" alt="Large Circle Of Friends">
+        </label><br>
+
+        <!-- Second choice -->
+        <input type="radio" id="smallCircle" name="question27" value="Vata-I enjoy chatty conversations">
+        <label for="smallCircle">
+            <img src="https://cdn.shopify.com/s/files/1/0037/7690/5283/files/vpq-social-small.svg?v=16539090912" alt="Small Circle Of Friends">
+        </label><br>
+
+        <!-- Third choice -->
+        <input type="radio" id="privatePerson" name="question27" value="Kapha-I prefer not to initiate conversations, and stay reserved">
+        <label for="privatePerson">
+            <img src="https://cdn.shopify.com/s/files/1/0037/7690/5283/files/vpq-social-private.svg?v=16539090912" alt="Private Person">
+        </label><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["question27"])) {
+    $selectedOption = $_POST["question27"];
+    // Process the selected option here, such as saving it to a database or performing other operations
+    echo "You selected: " . $selectedOption;
+} else {
+    echo "Invalid request.";
+}
+?>
