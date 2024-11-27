@@ -1,25 +1,4 @@
-<?php
-include("db.php");
 
-
-session_start();
-
-$name = $_SESSION['username'];
-
-$userQuery = "SELECT email, address FROM register WHERE username = ? LIMIT 1"; 
-$stmt = $conn->prepare($userQuery);
-$stmt->bind_param("s", $name); 
-$stmt->execute();
-$stmt->bind_result($userEmail, $userAddress);
-
-if ($stmt->fetch()) {
-    $_SESSION['email'] = $userEmail;
-    $_SESSION['address'] = $userAddress;
-}
-
-$stmt->close();
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -128,7 +107,26 @@ $stmt->close();
     </style>
 </head>
 <body>
-    
+    <?php require("header.php");?><br>
+    <?php
+include("db.php");
+
+$name = $_SESSION['username'];
+
+$userQuery = "SELECT email, address FROM register WHERE username = ? LIMIT 1"; 
+$stmt = $conn->prepare($userQuery);
+$stmt->bind_param("s", $name); 
+$stmt->execute();
+$stmt->bind_result($userEmail, $userAddress);
+
+if ($stmt->fetch()) {
+    $_SESSION['email'] = $userEmail;
+    $_SESSION['address'] = $userAddress;
+}
+
+$stmt->close();
+
+?>
 
     <h3>Fill the Form To Confirm Your Order</h3>
 
@@ -196,7 +194,7 @@ $stmt->close();
 
             <input type="submit" class="submit" value="Confirm Order">
         </form>
-    </div>
+    </div><br>
     <script>
     $(document).ready(function() {
         $('#paymentMethod').change(function() {

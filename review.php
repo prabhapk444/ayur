@@ -4,7 +4,6 @@ include("db.php");
 session_start();
 
 $name = $_SESSION['username'];
-
 $userQuery = "SELECT email, address FROM register WHERE username = ? LIMIT 1"; 
 $stmt = $conn->prepare($userQuery);
 $stmt->bind_param("s", $name); 
@@ -17,36 +16,65 @@ if ($stmt->fetch()) {
 }
 
 $stmt->close();
-?><!DOCTYPE html>
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reviews</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>User Reviews</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <style>
-
-        *{
+        * {
             font-family: 'Roboto', sans-serif;
+            box-sizing: border-box;
         }
-   .video-container {
-            position: relative;
-            overflow: hidden;
-            padding-bottom: 56.25%;
-            margin: 20px 0;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .container h3 {
+            margin-bottom: 20px;
+        }
+        .container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .container form label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .container form input,
+        .container form textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             width: 100%;
-            height: 100%;
+        }
+        .container form button {
+            background-color: #ffd803;
+            color: #272343;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .container form button:hover {
+            background-color: #e0c300;
         }
         .rating {
             display: inline-block;
             unicode-bidi: bidi-override;
             direction: rtl;
+            margin-bottom: 10px;
+            position: relative;
         }
         .rating > input {
             display: none;
@@ -54,305 +82,219 @@ $stmt->close();
         .rating > label {
             float: right;
             cursor: pointer;
-            color: grey;
+            color: #ccc;
+            font-size: 40px;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
-        .rating > label:before {
-            content: '\2605';
-            margin-right: 5px;
-            font-size: 24px;
+        .rating > label::before {
+            content: '★';
         }
-        .rating > input:checked ~ label,
-        .rating > input:checked ~ label ~ label {
-            color: orange;
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: #f4b400; 
+            transform: scale(1.1);
+            transition: transform 0.3s ease, color 0.3s ease; 
         }
-
-        .container form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 50%;
-            margin: 0 auto; 
-            border-radius: 20px;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4); 
+        .rating input:checked + label,
+        .rating input:checked + label ~ label {
+            color: #ffd803;
+            animation: bounce 0.5s ease-in-out; 
         }
-
-        .container form label {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .container form input[type="text"],
-        .container form input[type="email"],
-        .container form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .container form button {
-            padding: 10px 20px;
-            background-color: #ffd803;
-            color:#272343;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-          
-        img {
-    display: block; 
-    margin: 0 auto; 
-    width: 50%; 
-    height: auto; 
-
-}.image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-.image-container {
-    text-align: center;
-    position: relative; 
-}
-
-.image-container img {
-    max-width: 100%;
-    height: auto;
-}
-
-.arrow {
-    position: absolute;
-    top: 50%;
-    left: calc(100% + 10px);
-    transform: translateY(-50%);
-    font-size: 80px;
-    color: #333;
-    animation: floatArrow 2s ease-in-out infinite alternate; 
-}
-
-@keyframes floatArrow {
-    from {
-        transform: translateY(-50%) translateY(0);
-    }
-    to {
-        transform: translateY(-50%) translateY(-10px);
-    }
-}
-
-
-        @media (max-width: 992px) {
-            .container form {
-                width: 100%; 
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
             }
-            img{
-                width:100%;
+            40% {
+                transform: translateY(-10px);
             }
-            .image-grid {
-        grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
-    }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+        }
+        .rating label:hover::before,
+        .rating input:checked + label:hover::before,
+        .rating input:checked + label:hover ~ label::before {
+            animation: pulse 0.5s ease-in-out infinite;
         }
         .reviews {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 20px;
-    }
-
-    .review-card {
-        width: 400px; 
-        /* background-colo  r: #f8f8f8; */
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-
-    .review-card img {
-        border-radius: 50%; 
-        width: 100px; 
-        height: 100px; 
-        margin-bottom: 10px;
-    }
-
-    .review-name {
-        text-align:left;
-        font-size: 16px;
-        margin-bottom: 5px;
-    }
-
-    .review-command {
-        font-size: 14px;
-        color: #666;
-        margin-bottom: 10px;
-    }
-
-    .star-ratings {
-        color: #ffd803;
-        font-size: 20px;
-    }
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .review-card {
+            width: 300px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            text-align: center;
+        }
+        .review-card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .review-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .review-command {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .star-ratings {
+            color: #ffd803;
+            font-size: 20px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .image-container {
+            text-align: center;
+            position: relative;
+        }
+        .image-container img {
+            width: 300px; 
+            height: 200px; 
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            left: calc(100% + 10px);
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: #333;
+            animation: floatArrow 2s ease-in-out infinite alternate;
+        }
+        @keyframes floatArrow {
+            from {
+                transform: translateY(-50%) translateY(0);
+            }
+            to {
+                transform: translateY(-50%) translateY(-10px);
+            }
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+            }
+            .image-container img {
+                width: 100%; 
+                height: auto; 
+            }
+        }
     </style>
 </head>
 <body>
-  
+
     <center><h3>User Reviews</h3></center>
-    <div class="video-container">
-        <iframe src="./videos/Vedix Customised Ayurveda_ Unlock Your Hair_s Full Potential.mp4" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="review img">
- <img src="./images/Code review.gif" alt="image" srcset="">
-    </div>
-
     <div class="image-grid">
-    <div class="image-container">
-        <center><h3>Before</h3></center>
-        <img src="./images/before.avif" alt="Before">
-        <span class="arrow">→</span> 
-    </div>
-    <div class="image-container">
-        <center><h3>After Using Ayurvedic Skin Product</h3></center>
-        <img src="./images/after.avif" alt="After">
-    </div>
-</div>
-<br><br>
-
-<div class="newimage">
-    <center><h3> Before and After Using Ayurvedic Hair Product</h3></center>
-    <img src="./images/hair.jpg" alt="">
-</div>
-<br><br><br>
-
-
-    <center><h3>Review Form</h3></center>
-    <div class="container">
-    <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
-
-        <label for="name">Full Name</label>
-        <input type="text" name="name" required  readonly value="<?php echo $_SESSION['username']; ?>">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required readonly value="<?php echo $_SESSION['email']; ?>">
-        <label for="image">Profile Image</label><br>
-        <input type="file" name="image" id="image"><br>
-        <label for="before_image">Before Ayurveda Image</label><br>
-<input type="file" name="before_image" id="before_image"><br>
-
-<label for="after_image">After Ayurveda Image</label><br>
-<input type="file" name="after_image" id="after_image"><br>
-
-        <label for="command">Command</label><br>
-        <textarea name="command" id="command" cols="30" rows="10"></textarea>
-        <label for="Ratings">Ratings</label>
-        <div class="rating">
-            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars"></label>
-            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars"></label>
-            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars"></label>
-            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars"></label>
-            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
+        <div class="image-container">
+            <center><h3>Before</h3></center>
+            <img src="./images/before.avif" alt="Before">
+            <span class="arrow">→</span>
         </div>
-        <button type="submit">Submit</button>
-    </form>
-</div><br><br>
+        <div class="image-container">
+            <center><h3>After Using Ayurvedic Skin Product</h3></center>
+            <img src="./images/after.avif" alt="After">
+        </div>
+    </div>
 
-<?php
-include("db.php");
+    <div class="container">
+        <form action="" method="post" enctype="multipart/form-data">
+            <label for="name">Full Name</label>
+            <input type="text" name="name" value="<?php echo htmlspecialchars($_SESSION['username']); ?>" readonly>
+            
+            <label for="email">Email</label>
+            <input type="email" name="email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" readonly>
+            
+            <label for="image">Profile Image</label>
+            <input type="file" name="image" id="image">
+            
+            <label for="before_image">Before Ayurveda Image</label>
+            <input type="file" name="before_image" id="before_image">
+            
+            <label for="after_image">After Ayurveda Image</label>
+            <input type="file" name="after_image" id="after_image">
+            
+            <label for="command">Command</label>
+            <textarea name="command" id="command" cols="30" rows="10"></textarea>
+            
+            <label for="rating">Ratings</label>
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars"></label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars"></label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars"></label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars"></label>
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star"></label>
+            </div>
+            <button type="submit">Submit</button>
+        </form><br>
+    </div>
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $uploadsPath = "./uploads/";
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $command = mysqli_real_escape_string($conn, $_POST['command']);
-    $ratings = mysqli_real_escape_string($conn, $_POST['rating']);
-    $before_image = $_FILES['before_image']['name'];
-    $temp_before_image = $_FILES['before_image']['tmp_name'];
-    move_uploaded_file($temp_before_image, $uploadsPath . $before_image);
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $uploadsPath = './uploads/';
+        if (!is_dir($uploadsPath)) {
+            mkdir($uploadsPath, 0777, true);
+        }
 
-    $after_image = $_FILES['after_image']['name'];
-    $temp_after_image = $_FILES['after_image']['tmp_name'];
-    move_uploaded_file($temp_after_image, $uploadsPath . $after_image);
-    
-    
-    $image = $_FILES['image']['name'];
-    $temp_image = $_FILES['image']['tmp_name'];
-   
-    move_uploaded_file($temp_image, $uploadsPath . $image);
+        $username = $_SESSION['username'];
+        $email = $_SESSION['email'];
+        $image = $_FILES['image']['name'];
+        $beforeImage = $_FILES['before_image']['name'];
+        $afterImage = $_FILES['after_image']['name'];
+        $command = htmlspecialchars($_POST['command']);
+        $rating = $_POST['rating'];
 
-    $sql = "INSERT INTO user_reviews (name, email, image, command, ratings, before_image, after_image) VALUES ('$name', '$email', '$image', '$command', '$ratings', '$before_image', '$after_image')";
-    if (mysqli_query($conn, $sql)) {
-        echo "<script>
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: 'Your review has been successfully submitted.',
-                });
-              </script>";
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        if ($image) {
+            move_uploaded_file($_FILES['image']['tmp_name'], $uploadsPath . $image);
+        }
+        if ($beforeImage) {
+            move_uploaded_file($_FILES['before_image']['tmp_name'], $uploadsPath . $beforeImage);
+        }
+        if ($afterImage) {
+            move_uploaded_file($_FILES['after_image']['tmp_name'], $uploadsPath . $afterImage);
+        }
+
+        $insertReview = "INSERT INTO reviews (name, email, profile_image, before_image, after_image, command, rating) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($insertReview);
+        $stmt->bind_param("ssssssi", $username, $email, $image, $beforeImage, $afterImage, $command, $rating);
+        if ($stmt->execute()) {
+            echo "<script>Swal.fire('Success!', 'Review submitted successfully!', 'success');</script>";
+        } else {
+            echo "<script>Swal.fire('Error!', 'Something went wrong. Please try again.', 'error');</script>";
+        }
+        $stmt->close();
     }
-    
-    mysqli_close($conn);
-}
-?>
-<?php
-include("db.php");
-$selectQuery = "SELECT name, command, image, ratings,before_image,after_image FROM user_reviews";
-$result = $conn->query($selectQuery);
-if ($result === false) {
-    echo "Error retrieving data: " . $conn->error;
-} else {
-    if ($result->num_rows > 0) {
-        echo '<div class="reviews shadow">';
-        while ($row = $result->fetch_assoc()) {
-            echo '<div class="review-card">';
-            echo '<h3 class="review-name">' . $row["name"] . '</h3>';
-            echo '<img src="./uploads/' . basename($row["image"]) . '" alt="User Image">';
-            echo '<h3 class="review-name">Before</h3>';
-            echo '<img src="./uploads/' . basename($row["before_image"]) . '" alt="User Image">';
-            echo '<h3 class="review-name">After using Ayureda</h3>';
-            echo '<img src="./uploads/' . basename($row["after_image"]) . '" alt="User Image">';
-            echo '<p class="review-command">' . $row["command"] . '</p>';
-            echo '<div class="star-ratings">';
-            for ($i = 0; $i < $row["ratings"]; $i++) {
-                echo '<span class="star">&#9733;</span>'; 
-            }
-            echo '</div>';
-            echo '</div>'; 
-        } 
-        echo '</div>'; 
-    } else {
-        echo "No reviews found.";
-    }
-}
-?>
+    ?>
 
-
-    <script>      
-document.addEventListener('DOMContentLoaded', function () {
-    let stars = document.querySelectorAll('.rating input');
-    stars.forEach(function (star) {
-        star.addEventListener('change', function () {
-            removeClassFromStars('rated');
-            let current = this;
-            while (current) {
-                current.classList.add('rated');
-                current = current.previousElementSibling;
-            }
-        });
-    });
-
-    function removeClassFromStars(className) {
-        stars.forEach(function (star) {
-            star.classList.remove(className);
-        });
-    }
-});
-
-    </script>
 </body>
-<?php
-include("footer.php");
-?>
 </html>

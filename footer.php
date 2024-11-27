@@ -185,7 +185,6 @@
     </div>
 
     <div class="copyright">
-      © 2024 Copyright:
       <a href="home.php" style="text-decoration: none;">Ayurvedic</a>
     </div>
   </footer>
