@@ -256,7 +256,7 @@ h4{
 <h4>Hii       <?php echo $name?></h4><br>
 
 <div class="quns2">
-<img src="./images/ques new.png" alt="my" srcset="" class="doc">
+<img src="./images/ques new.png" alt="my" srcset="" class="doc" loading='lazy'>
 </div>
 
 <p>This is Dr. Zeel Gandhi, Expert Ayurvedic Formulator at Ayurvedix. Thank you for completing the Vedix Skin Profile Quiz. I’ll be taking you through your Ayurvedic Skin analysis.
@@ -351,7 +351,7 @@ Your dosha profile is shown below.</p>
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="col-lg-4 col-md-4 col-sm-8 mb-4">';
                 echo '<div class="card h-100 shadow">';
-                echo '<img src="./uploads/' . basename($row["image"]) . '" class="card-img-top" alt="' . $row["product_name"] . '">';
+                echo '<img src="./uploads/' . basename($row["image"]) . '" class="card-img-top" alt="' . $row["product_name"] . '" loading='lazy'>';
                 echo '<div class="card-body">';
                 echo '<h5 class="card-title product-name">' . $row["product_name"] . '</h5>';
                 echo '<p class="card-text"><strong>Category:</strong> ' . $row["category"] . '</p>';
@@ -389,23 +389,23 @@ Your dosha profile is shown below.</p>
 <div class="container"  data-aos="fade-up" data-aos-duration="3000">
   <div class="row">
     <div class="col">
-    <img src="./images/brandbest_award.avif" alt="" srcset="">
+    <img src="./images/brandbest_award.avif" alt="" srcset="" loading='lazy'>
     <p class="award">Economic Times Award Best Brand</p>
     </div>
     <div class="col">
-    <img src="./images/brandfem_award.avif" alt="" srcset="">
+    <img src="./images/brandfem_award.avif" alt="" srcset="" loading='lazy'>
       <p class="award">Femina Power Brand  2022-23</p>
     </div>
     <div class="col">
-    <img src="./images/brandgrazia.avif" alt="" srcset="">
+    <img src="./images/brandgrazia.avif" alt="" srcset="" loading='lazy'>
     <p class="award">Grazia Award Most Loved Brand</p>
     </div>
     <div class="col">
-    <img src="./images/cosmobeauty.avif" alt="" srcset="">
+    <img src="./images/cosmobeauty.avif" alt="" srcset="" loading='lazy'>
     <p class="award">Cosmopolitan Award Best Product</p>
     </div>
     <div class="col">
-    <img src="./images/entrepreneur_award.avif" alt="" srcset="">
+    <img src="./images/entrepreneur_award.avif" alt="" srcset="" loading='lazy'>
     <p class="award">Best Ayurvedic Startup Entrepreneur Award</p>
     </div>
   </div>
@@ -425,7 +425,7 @@ Your customised Vedix skin products are rich in over 20 natural herbs which help
 
 "Vedix uses a group of herbs as opposed to one single herb so as to create the perfect formulation for your skin with no side effects" says Dr. Zeel Gandhi.</p>
 
-<img src="./images/zeel.png" alt="my" srcset="" class="doc"><br>
+<img src="./images/zeel.png" alt="my" srcset="" class="doc" loading='lazy'><br>
 <center>Dr.Zeel Gandhi
 B.A.M.S.
 Expert Ayurvedic Formulator</center><br><br>
@@ -439,7 +439,7 @@ The diverse actions of herbs in a specially designed formula ensures that the pr
  <center> <h3>100% Ayurvedic Premium Quality Products With Ingredients Picked & Extracted Exclusively For YOU!<h3></center>
 <div class="newcontainer">
         <img src="./images/skin_prod_Steps.webp" alt=""data-aos="fade-up"
-     data-aos-duration="3000" class="new">
+     data-aos-duration="3000" class="new" loading='lazy'>
         <div class="newcontent" data-aos="fade-right">
             <p class="text-justify" data-aos="zoom-in-right">When it comes to skin care, there are no compromises. And why should there be any? After all, you love your skin and we know it!
 
@@ -520,7 +520,7 @@ Not only is each ingredient handpicked for you, but we also ensure the quality a
         <p class="amount"><strong>Special Introductory Offer - Get Vedix For As Low As Rs. 999/- Per Month!</strong></p>
     </div>  <br><br>
 
-<img src="./images/vedix.webp" alt="" srcset="" class="vedix">
+<img src="./images/vedix.webp" alt="" srcset="" class="vedix" loading='lazy'>
 
 <br><br>
 

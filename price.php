@@ -43,7 +43,7 @@ h3{
     ?>
      <marquee behavior="scroll" direction="left">Pricing</marquee><br><br>
     <center><h3>Hair Care</h3></center>
-    <img src="./images/hairnew.png" alt="image">
+    <img src="./images/hairnew.png" alt="image" loading='lazy'>
     <div class="container">
   <div class="row">
     <div class="col">
@@ -76,7 +76,7 @@ h3{
 
 
 <center><h3>Skin Care</h3></center>
-    <img src="./images/skinnew.png" alt="image">
+    <img src="./images/skinnew.png" alt="image" loading='lazy'>
     <div class="container">
   <div class="row">
     <div class="col">

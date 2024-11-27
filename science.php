@@ -83,7 +83,7 @@ Ayurveda looks at hair issues on a micro level and hence, gets to the root of th
 
 This is also one of the reasons why Ayurveda chooses one of the most easily understandable methods to measure the magnitude of the hair issue, the root cause, and the solution, with just a simple assessment. At Vedix, we call this method as the “Dosha Assessment”*, wherein we analyze the elevated states of Vata (Air and Ether Energies), Pitta (Fire Energy), and Kapha (Water and Earth Energies) in an individual through the inputs given in the Dosha Assessment Questionnaire*</p>
         </div>
-        <img src="./images/prabal_home-removebg-preview.png" alt="">
+        <img src="./images/prabal_home-removebg-preview.png" alt="" loading='lazy'>
     </div>
     <button class="button" id="hair">Know Your Hair</button><br><br> 
 
@@ -143,7 +143,7 @@ This is also one of the reasons why Ayurveda chooses one of the most easily unde
 
     <div class="container">
         <img src="./images/newskin3.png" alt=""data-aos="fade-up"
-     data-aos-duration="3000">
+     data-aos-duration="3000" loading='lazy'>
         <div class="content" data-aos="fade-up">
             <p class="h3" style="color:#2d334a;text-align:justify;"> Ayurvedic For Skin </p>
             Vedix skincare regimen starts with you. It is customised to rejuvenate your unique skin from within. Vedix Ayurvedic regimen is formulated by experienced doctors with time-tested natural ingredients.

@@ -218,12 +218,12 @@ $stmt->close();
     <div class="image-grid">
         <div class="image-container">
             <center><h3>Before</h3></center>
-            <img src="./images/before.avif" alt="Before">
+            <img src="./images/before.avif" alt="Before" loading="lazy">
             <span class="arrow">→</span>
         </div>
         <div class="image-container">
             <center><h3>After Using Ayurvedic Skin Product</h3></center>
-            <img src="./images/after.avif" alt="After">
+            <img src="./images/after.avif" alt="After" loading="lazy">
         </div>
     </div>
 
