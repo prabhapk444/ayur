@@ -32,7 +32,7 @@ if ($result === false) {
         while ($row = $result->fetch_assoc()) {
             echo '<div class="col-lg-4 col-md-4 col-sm-8 mb-4">';
             echo '<div class="card shadow">';
-            echo '<img src="./uploads/' . basename($row["image"]) . '" class="card-img-top" alt="' . $row["product_name"] . '">';
+            echo '<img src="./uploads/' . basename($row["image"]) . '" class="card-img-top" alt="' . $row["product_name"] . '" loading="lazy">';
             echo '<div class="card-body">';
             echo '<h5 class="card-title product-name">' . $row["product_name"] . '</h5>';
             echo '<p class="card-text"><strong>Category:</strong> ' . $row["category"] . '</p>';
