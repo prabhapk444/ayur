@@ -31,7 +31,7 @@
     <h3>Our Whatsapp account</h3>
 </center>
 <div class="container">
-        <img src="././images/wp.jpg" alt="Facebook" srcset="">
+        <img src="././images/wp.jpg" alt="Facebook" srcset="" loading="lazy">
     </div>
 </body>
 <?php

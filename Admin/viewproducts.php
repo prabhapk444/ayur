@@ -10,7 +10,6 @@
             font-family: 'Roboto', sans-serif;
         }
         body {
-           
             background-color: #f8f9fa;
         }
 
@@ -69,7 +68,7 @@
         <?php
             include("db.php");
 
-            $selectQuery = "SELECT product_id, product_name, category,price,description, quantity, availablequantity FROM products";
+            $selectQuery = "SELECT product_id, product_name, category, price, quantity FROM products";
 
             $result = $conn->query($selectQuery);
 
@@ -83,24 +82,21 @@
                     echo '<th>ProductID</th>';
                     echo '<th>Product Name</th>';
                     echo '<th>Category</th>';
-                    echo '<th>Description</th>';
                     echo '<th>Price (&#8377;)</th>';
                     echo '<th>Quantity</th>';
-                    echo '<th>Availablequantity</th>';
                     echo '</tr>';
                     echo '</thead>';
                     echo '<tbody>';
+
+                
 
                     while ($row = $result->fetch_assoc()) {
                         echo '<tr>';
                         echo '<td>' . $row["product_id"] . '</td>';
                         echo '<td>' . $row["product_name"] . '</td>';
                         echo '<td>' . $row["category"] . '</td>';
-                        echo '<td>' . $row["description"] . '</td>'; 
                         echo '<td>₹' . $row["price"] . '</td>';
-
                         echo '<td>' . $row["quantity"] . '</td>';
-                        echo '<td>' . $row["availablequantity"] . '</td>';
                         echo '</tr>';
                     }
                     

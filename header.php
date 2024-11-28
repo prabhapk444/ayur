@@ -53,7 +53,7 @@ $userID = $_SESSION["user_id"];
             <a class="nav-link text-white" href="concern.php">Consultancy</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="login.php"><?php echo $username ?></a>
+            <a class="nav-link text-white" href="logout.php"><?php echo $username ?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="add_to_cart.php"><i class="fas fa-shopping-cart"></i></a>

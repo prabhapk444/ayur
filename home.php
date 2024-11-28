@@ -246,12 +246,6 @@ Entrepreneur Award</p>
 
     <script>
         AOS.init();
-        $(document).ready(function(){
-   
-    $('#carouselExample').carousel({
-      interval: 3000
-    });
-  });
     </script>
 </body>
 <?php

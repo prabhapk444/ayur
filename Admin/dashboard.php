@@ -126,7 +126,6 @@ echo "<marquee>Welcome, $username!</marquee>";?>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 text-white bg-dark" href="#reviews">Reviews</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 text-white bg-dark" href="#pay">Payments</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 text-white bg-dark" href="#orders">Orders</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 text-white bg-dark" href="#sal">sales</a>
                     <!-- <a class="list-group-item list-group-item-action list-group-item-light p-3" href="">Status</a> -->
                 </div>
             </div>
@@ -345,13 +344,7 @@ if ($result->num_rows > 0) {
  </section>
 
 
- <marquee behavior="scroll" direction="left" class="color-change">Sales</marquee>
 
-<section id="sal">
-   <?php
-   include("sales.php");
-   ?>
-</section>
 
 
 <marquee behavior="scroll" direction="left" class="color-change">Orders</marquee>

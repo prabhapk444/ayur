@@ -133,7 +133,7 @@ This is also one of the reasons why Ayurveda chooses one of the most easily unde
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                     <div class="accordion-body" style="text-align:justify;">
-                        Vedix can help you treat hair fall caused by the elevated doshas with herbs, which help in specifically pacifying the elevated doshas. The herbs not only pacify the elevated doshas but also nourish hair and scalp, saving your follicles from further damage and arresting the hair fall caused by elevated doshas, altogether.
+                        Ayurvedic can help you treat hair fall caused by the elevated doshas with herbs, which help in specifically pacifying the elevated doshas. The herbs not only pacify the elevated doshas but also nourish hair and scalp, saving your follicles from further damage and arresting the hair fall caused by elevated doshas, altogether.
                     </div>
                 </div>
             </div>

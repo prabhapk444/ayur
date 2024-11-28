@@ -87,6 +87,9 @@
             text-decoration: none;
             transition: all 0.2s ease-in-out;
         }
+        .submit:hover{
+            color:white;
+        }
 
         .form p {
             color: #2b2c34;
@@ -171,68 +174,64 @@ $stmt->close();
 <p><strong>Total Amount:</strong> ₹<?php echo $_POST['totalAmount']; ?></p>
 <input type="hidden" name="totalAmount" value="<?php echo $_POST['totalAmount']; ?>">
 
-            <label for="payment">Payment Method</label>
-            <select name="payment" id="paymentMethod">
-    <option value=""></option>
+<label for="payment">Payment Method</label>
+<select name="payment" id="paymentMethod" required class="input">
+    <option value="" disabled selected>Select Payment Method</option>
     <option value="cash">Cash On Delivery</option>
     <option value="online">Online Payment</option>
-</select><br><br><div id="onlinePayment" style="display: none;">
-    <label><input type="radio" name="onlinePaymentMethod" value="debitCard"> Debit Card Number</label><br>
-    <input type="text" name="debitCard" id="debitCard" style="display: none;"><br><br>
+</select>
 
-    <label><input type="radio" name="onlinePaymentMethod" value="creditCard"> Credit Card Number</label><br>
-    <input type="text" name="creditCard" id="creditCard" style="display: none;"><br><br>
-
-    <label><input type="radio" name="onlinePaymentMethod" value="gpay"> G Pay</label><br>
-    <input type="text" name="gpay" id="gpay" style="display: none;"><br><br>
-
-    <label for="additionalInfo">Enter the Number</label><br>
-        <input type="text" name="additionalInfo"><br><br>
-</div>
-
-
-
+<div id="onlinePayment" style="display: none; margin-top: 10px;">
+    <img src="./images/qr.jpeg" alt="QR Code for Online Payment" loading="lazy" style="width: 200px; height: 200px;">
+</div><br>
             <input type="submit" class="submit" value="Confirm Order">
         </form>
     </div><br>
     <script>
-    $(document).ready(function() {
-        $('#paymentMethod').change(function() {
-            var selectedPaymentMethod = $(this).val();
-            if (selectedPaymentMethod == 'online') {
-                $('#onlinePayment').show();
-            } else {
-                $('#onlinePayment').hide();
+   $(document).ready(function() {
+    $('#paymentMethod').change(function() {
+        const selectedPaymentMethod = $(this).val();
+        if (selectedPaymentMethod === 'online') {
+            $('#onlinePayment').fadeIn();
+        } else {
+            $('#onlinePayment').fadeOut();
+        }
+    });
+
+    $('#orderForm').submit(function(event) {
+        event.preventDefault(); 
+        let formData = new FormData(this);
+
+        $.ajax({
+            url: 'process_order.php',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                Swal.fire({
+                    title: 'Order Placed!',
+                    text: 'Your order has been successfully placed.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'home.php';
+                    }
+                });
+            },
+            error: function(xhr, status, error) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'There was an issue placing your order. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             }
         });
-
-        $('#orderForm').submit(function(event) {
-            event.preventDefault(); 
-            let formData = new FormData(this);
-            $.ajax({
-                url: 'process_order.php',
-                method: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    Swal.fire({
-                        title: 'Order Placed!',
-                        text: 'Your order has been successfully placed.',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = 'home.php';
-                        }
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error:', error);
-                }
-            });
-        });
     });
+});
+
 </script>
 
 

@@ -101,12 +101,12 @@ At Vedix every product begins with a thorough examination of your body and its h
 So, you can be sure of the fact that every product from Vedix is customised and formulated with the right ingredients to solve your issues!
         </div>
         <img src="./images/whyvedix_banner.png" alt=""data-aos="fade-up"
-     data-aos-duration="3000">
+     data-aos-duration="3000" loading="lazy">
     </div>
 
     <div class="container">
     <img src="./images/why_unique_d.png" alt=""data-aos="fade-up"
-     data-aos-duration="3000">
+     data-aos-duration="3000" loading="lazy">
         <div class="content" data-aos="fade-up">
             <p class="h3">Every Ayurvedic Product Is As Unique As Your Needs</p>
             If you are one of the millions of people who use generic products that are made for millions of people out there, then there is something you should know before it’s too late. It’s the fact that the products are made for everyone else out there but, not for your unique needs, are doing more bad than good. The benefits you render from generic products seldom last.
@@ -124,7 +124,7 @@ It’s simple really, you are unique and Vedix makes customised products that ar
          
 
        <div class="container">
-    <img src="./images/sridevi.png" alt=""data-aos="fade-up" data-aos-duration="3000">
+    <img src="./images/sridevi.png" alt=""data-aos="fade-up" data-aos-duration="3000" loading="lazy">
         <div class="content" data-aos="fade-up">
             <p class="h3">Dr. Sridevi Gaddam, B.A.M.S:</p>
             Dr. Sridevi gaddam is an an award-winning ayurvedic practitioner with over 20 years of clinical expertise. She mastered the art of formulations and panchakarma from some of the most respected gurus of ayurveda in kerala. She is the brains behind Vedix, as well as the lead formulator.
@@ -132,7 +132,7 @@ It’s simple really, you are unique and Vedix makes customised products that ar
     </div><br><br>
 
     <div class="container">
-    <img src="./images/zeel.png" alt=""data-aos="fade-up"data-aos-duration="3000" id="imge">
+    <img src="./images/zeel.png" alt=""data-aos="fade-up"data-aos-duration="3000" id="imge" loading="lazy">
         <div class="content" data-aos="fade-up">
             <p class="h3">Dr. Zeel Gandhi, B.A.M.S.</p>
             Dr. Gandhi is our in-house expert for internal medicine, Panchakarma therapies, Yoga and Ayurvedic nutrition. Having graduated as a top ranker from Dr. D.Y.Patil College of Ayurveda and Research Centre, Navi Mumbai, she now leads the product formulations at Ayurvedic.
