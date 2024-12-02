@@ -133,7 +133,7 @@
      
 
     <div class="container">
-    <img src="./images/Computer login (1).gif" alt="" class="image"> 
+    <img src="./images/Computer login (1).gif" alt="" class="image" loading="lazy"> 
  <form class="form" method="post" action="" autocomplete="off">
      <label for="username" class="label">Username</label>
      <input type="text" id="username" name="username" required class="input">

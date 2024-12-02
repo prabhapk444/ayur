@@ -157,8 +157,9 @@
           <li><a href="price.php"><i class="fas fa-shipping-fast fa-fw fa-sm"></i>Pricing</a></li>
           <li><a href="science.php"><i class="fas fa-backspace fa-fw fa-sm"></i>Science</a></li>
           <li><a href="vedix.php"><i class="far fa-file-alt fa-fw fa-sm"></i>Why Ayurvedic</a></li>
-          <li><a href="review.php"><i class="far fa-file-alt fa-fw fa-sm"></i>Reviews</a></li>
-          <li><a href="Faqs.php"><i class="far fa-file-alt fa-fw fa-sm"></i>Faqs</a></li>
+          <li><a href="review.php"><i class="fas fa-star fa-fw fa-sm"></i>Reviews</a></li>
+          <li><a href="Faqs.php"><i class="fas fa-question-circle fa-fw fa-sm"></i>Faqs</a></li>
+
         </ul>
       </div>
 
@@ -177,9 +178,8 @@
         <h5>Address</h5>
         <p>For assistance in purchasing, checking order status, or joining our newsletter, feel free to contact us at:</p>
         <address>
-        #195, PAC Ramasamy Raja Salai, Thoppupatti, Rajapalayam, Tamil Nadu 626117   <br><br>
-          <i class="fas fa-phone phone-icon"></i> +91 9798162510 <br>
-          <i class="fas fa-phone phone-icon"></i> +91 7623019101 <br>
+        11, Sedan Kinatru Street, Thiruthangal, Sivakasi, Tamil Nadu 626130   <br><br>
+          <i class="fas fa-phone phone-icon"></i> +91 6383786437 <br>
         </address>
       </div>
     </div>

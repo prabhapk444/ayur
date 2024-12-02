@@ -17,7 +17,7 @@
     include("header.php");
     ?>
     <br><br>
-    <center><h3>Skin Products</h3></center>
+    <center><h3>Skin Products</h3></center><br>
     <?php
     include("db.php");
 

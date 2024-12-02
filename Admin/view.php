@@ -73,7 +73,7 @@
             <?php
             include("db.php");
 
-            $selectQuery = "SELECT product_name, category, price, quantity, availablequantity, description,image FROM products";
+            $selectQuery = "SELECT product_name, category, price, quantity, description,image FROM products";
             $result = $conn->query($selectQuery);
 
             if ($result === false) {
@@ -88,7 +88,7 @@
                         echo '<p><strong>Category:</strong> ' . $row["category"] . '</p>';
                         echo '<p><strong>Price:</strong> ₹' . $row["price"] . ' </p>';
                         echo '<p><strong>Quantity:</strong> ' . $row["quantity"] . '</p>';
-                        echo '<p><strong>Availability:</strong> ' . $row["availablequantity"] . '</p>';
+                    
                         echo '<p><strong>Description:</strong> ' . $row["description"] . '</p>';
                         echo '</div>';
                        
